@@ -133,7 +133,10 @@ public class DungeonRoom extends Room {
 			case 2:
 				nextState();
 				break;
+			default:
+				System.out.println("Nothing happens");
 			}
+
 			break;
 
 		case "take stairs":
@@ -145,6 +148,8 @@ public class DungeonRoom extends Room {
 			case 5:
 				printScenario4();
 				break;
+			default:
+				System.out.println("Nothing happens");
 			}
 			break;
 

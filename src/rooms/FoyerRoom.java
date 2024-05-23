@@ -53,6 +53,13 @@ public class FoyerRoom extends Room {
 		System.out.print(text);
 	}
 
+	public void printLibraryMove() {
+		String text = """
+				You walk down the passage towards the library
+				""";
+		System.out.print(text);
+	}
+
 	public void printBasementMove() {
 		String text = """
 				You walk down the staircase into the basement
@@ -93,7 +100,8 @@ public class FoyerRoom extends Room {
 			break;
 
 		case "enter library":
-
+			printLibraryMove();
+			nextRoom = new LibraryRoom();
 			break;
 
 		case "enter basement":

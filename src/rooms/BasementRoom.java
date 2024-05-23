@@ -17,6 +17,9 @@ public class BasementRoom extends Room {
 		case (1):
 			printScenario1();
 			break;
+		case (2):
+			printScenario2();
+			break;
 		}
 
 	}
@@ -29,9 +32,25 @@ public class BasementRoom extends Room {
 		System.out.print(text);
 	}
 
+	// TODO
+	public void printScenario2() {
+		String text = """
+				You use your torch to light up the room, allowing you to see your surroundings
+
+				""";
+		System.out.print(text);
+	}
+
 	public void printRoom1() {
 		String text = """
 				You try to look around, but it's too dark to see anything
+				""";
+		System.out.print(text);
+	}
+
+	public void printEnterFoyer() {
+		String text = """
+				You leave the basement and enter the foyer
 				""";
 		System.out.print(text);
 	}
@@ -57,8 +76,13 @@ public class BasementRoom extends Room {
 			player.inventory.print();
 			break;
 
+		case "use torch":
+			nextState();
+			break;
+
 		case "leave":
-			
+			printEnterFoyer();
+			nextRoom = new FoyerRoom();
 			break;
 
 		}

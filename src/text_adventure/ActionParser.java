@@ -53,8 +53,8 @@ public class ActionParser {
 		}
 
 		switch (action) {
-		case "move":
 		case "leave":
+		case "leave room":
 			return "leave";
 		}
 
@@ -82,7 +82,6 @@ public class ActionParser {
 
 		// If action didn't match anything, return it
 		return action;
-
 	}
 
 	public static void printHelp() {
@@ -91,6 +90,7 @@ public class ActionParser {
 				Some common actions you can input include:
 				check room
 				check bag
+				leave room
 				take [item]
 				use [item]
 				""";
