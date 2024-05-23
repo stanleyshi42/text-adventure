@@ -3,19 +3,20 @@ package text_adventure;
 // Takes the player's input and parses it
 public class ActionParser {
 	public static String parseAction(String action) {
+		action = action.trim();
 		String[] actions = action.split(" "); // Split player's input into tokens
 
 		switch (action) {
+		case "commands":
+		case "instructions":
 		case "help":
-			System.out.println("Common actions you can make include:");
-			System.out.println("inspect room");
-			System.out.println("check bag");
-			return "";
+			return "help";
 		}
 
 		switch (action) {
 		case "inspect":
 		case "inspect room":
+		case "check room":
 		case "look around":
 			return "inspect room";
 		}
@@ -62,5 +63,17 @@ public class ActionParser {
 		// If action didn't match anything, return it
 		return action;
 
+	}
+
+	public static void printHelp() {
+		String text = """
+				A voice in your head tells you...
+				Some common actions you can input include:
+				check room
+				check bag
+				take [item]
+				use [item]
+				""";
+		System.out.print(text);
 	}
 }

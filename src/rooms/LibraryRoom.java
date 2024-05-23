@@ -1,14 +1,11 @@
 package rooms;
 
-public class MainHallRoom extends Room {
-
-	public MainHallRoom() {
-
-	}
+public class LibraryRoom extends Room {
 
 	@Override
 	public void run() {
-		
+		// TODO Auto-generated method stub
+
 	}
 
 	@Override

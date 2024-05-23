@@ -41,12 +41,15 @@ public class DungeonRoom extends Room {
 	}
 
 	public void printScenario1() {
-		System.out.println(". . . . .");
-		System.out.println("You awaken to find yourself in the cell of a dimly lit dungeon");
-		System.out.println("The last thing you remember is approaching a wizard's tower");
-		System.out.println("Did the wizard imprison you? In any case, you don't plan on staying here forever");
-		System.out.println("All you have is your trusty backpack, although its been emptied of its contents");
-		System.out.println("What will you do?");
+		String text = """
+				. . . . .
+				You awaken to find yourself in the cell of a dimly lit dungeon
+				The last thing you remember is approaching a wizard's tower
+				Did the wizard imprison you? In any case, you don't plan on staying here forever
+				All you have is your trusty backpack, although its been emptied of its contents
+				What will you do?
+				""";
+		System.out.print(text);
 	}
 
 	public void printScenario2() {
@@ -54,15 +57,18 @@ public class DungeonRoom extends Room {
 	}
 
 	public void printScenario3() {
-		System.out.println("With your second kick, the door flies open!");
-		System.out.println("You exit your cell into a long dungeon hallway lined with cells");
-		System.out.println("At the end of the hall is a stairway leading up");
+		String text = """
+				With your second kick, the door flies open!
+				You exit your cell into a long dungeon hallway lined with cells
+				At the end of the hall is a stairway leading up
+				""";
+		System.out.print(text);
 	}
 
 	public void printScenario4() {
 		System.out.println("You approach the stairway and start ascending its steps...");
 		try {
-			for (int i = 0; i < 0; i++) {
+			for (int i = 0; i < 0; i++) { // TODO increase wait time
 				Thread.sleep(1000);
 				System.out.print(".");
 			}
@@ -74,8 +80,8 @@ public class DungeonRoom extends Room {
 		System.out.println();
 		System.out.println("After what feels like an eternity, you finally reach the top of the stairway");
 
-		// Create the next room to enter
-		nextRoom = new MainHallRoom();
+		// Select the next room to move to
+		nextRoom = new FoyerRoom();
 		state++;
 	}
 
@@ -93,10 +99,15 @@ public class DungeonRoom extends Room {
 	}
 
 	@Override
+	// Perform player's action depending on the state of the room
 	public void parseAction(String action) {
 		String parsedAction = ActionParser.parseAction(action);
 
 		switch (parsedAction) {
+		case "help":
+			ActionParser.printHelp();
+			break;
+
 		case "inspect room":
 			switch (state) {
 			case 1:
