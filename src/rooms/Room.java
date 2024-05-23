@@ -1,7 +1,7 @@
 package rooms;
 
 public abstract class Room {
-	int state = 0;
+	int state = 1;
 
 	public abstract void run();
 

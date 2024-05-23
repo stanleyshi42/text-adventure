@@ -13,10 +13,15 @@ public class DungeonRoom extends Room {
 	@Override
 	public void run() {
 		switch (state) {
-		case (0):
+		case (1):
 			printScenario1();
 			break;
-
+		case (2):
+			printScenario2();
+			break;
+		case (3):
+			printScenario3();
+			break;
 		}
 
 	}
@@ -28,7 +33,14 @@ public class DungeonRoom extends Room {
 		System.out.println("Did the wizard imprison you? In any case, you don't plan on staying here forever");
 		System.out.println("All you have is your trusty backpack, though emptied of its contents");
 		System.out.println("What will you do?");
-		state++;
+	}
+
+	public void printScenario2() {
+		System.out.println("You give the door a good kick, but it doesn't budge. Maybe one more will do it");
+	}
+
+	public void printScenario3() {
+		System.out.println("With your second kick, the door flies open!");
 
 	}
 
@@ -42,9 +54,10 @@ public class DungeonRoom extends Room {
 		String parsedAction = ActionParser.parseAction(action);
 
 		switch (parsedAction) {
-		case "inspect":
+		case "inspect room":
 			switch (state) {
 			case 1:
+			case 2:
 				printRoom1();
 				break;
 			}
@@ -54,9 +67,19 @@ public class DungeonRoom extends Room {
 			player.inventory.print();
 			break;
 
+		case "kick door":
+			switch (state) {
+			case 1:
+				state++;
+				break;
+			case 2:
+				state++;
+				break;
+			}
+			break;
+
 		default:
 			System.out.println("Nothing happens");
-			break;
 		}
 
 	}

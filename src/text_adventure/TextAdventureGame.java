@@ -31,7 +31,7 @@ public class TextAdventureGame {
 		while (true) {
 			try {
 				System.out.println("Welcome to Super Text Adventure!");
-				System.out.println("Enter name:");
+				System.out.println("Enter your character's name:");
 				String input = reader.readLine();
 
 				this.player = new Player(input);

@@ -7,6 +7,10 @@ public class Player {
 	public Inventory inventory = new Inventory();
 	public Room currentRoom;
 
+	public Player() {
+		this("Player");
+	}
+
 	public Player(String name) {
 		this.name = name;
 	}
