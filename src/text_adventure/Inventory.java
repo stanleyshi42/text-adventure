@@ -1,11 +1,22 @@
-package textAdventure;
+package text_adventure;
 
 import java.util.ArrayList;
 
 public class Inventory {
-	ArrayList<Item> inventory = new ArrayList<>();
+	private ArrayList<Item> inventory = new ArrayList<>();
 
-	Inventory() {
-
+	public void add(Item item) {
+		inventory.add(item);
 	}
+
+	public void print() {
+		System.out.println("You rummage through your backpack and find...");
+		if (inventory.isEmpty())
+			System.out.println("Nothing!");
+		else
+			for (Item i : inventory) {
+				System.out.println(i);
+			}
+	}
+
 }

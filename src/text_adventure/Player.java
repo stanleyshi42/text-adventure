@@ -1,8 +1,11 @@
-package textAdventure;
+package text_adventure;
+
+import rooms.Room;
 
 public class Player {
-	String name;
-	Inventory inventory = new Inventory();
+	public String name;
+	public Inventory inventory = new Inventory();
+	public Room currentRoom;
 
 	public Player(String name) {
 		this.name = name;

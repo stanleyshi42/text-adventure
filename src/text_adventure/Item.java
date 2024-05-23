@@ -1,6 +1,6 @@
-package textAdventure;
+package text_adventure;
 
 // The various items the player can find in the game
 public enum Item {
-	TORCH, CANDLE, STRING, INVISIBILITY_CLOAK
+	CANDLE, TORCH, STRING, INVISIBILITY_CLOAK
 }
