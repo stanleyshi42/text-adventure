@@ -43,9 +43,20 @@ public class ActionParser {
 		}
 
 		switch (action) {
-		// case "kick":
+		case "kick":
+			System.out.println("Kick what?");
+			return "";
 		case "kick door":
 			return "kick door";
+		}
+
+		switch (action) {
+		case "leave":
+		case "leave dungeon":
+		case "go upstairs":
+		case "go up stairs":
+		case "take stairs":
+			return "leave";
 		}
 
 		// If action didn't match anything, return it

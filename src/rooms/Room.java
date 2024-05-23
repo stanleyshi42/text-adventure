@@ -1,7 +1,11 @@
 package rooms;
 
+import text_adventure.Player;
+
 public abstract class Room {
-	int state = 1;
+	public Player player;
+	int state = 0;
+	public Room nextRoom;
 
 	public abstract void run();
 
