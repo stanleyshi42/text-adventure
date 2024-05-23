@@ -1,9 +1,12 @@
 package rooms;
 
 import text_adventure.ActionParser;
+import text_adventure.Item;
 import text_adventure.Player;
 
 public class FoyerRoom extends Room {
+
+	boolean torchItem = true;
 
 	public FoyerRoom() {
 
@@ -36,7 +39,7 @@ public class FoyerRoom extends Room {
 				The ones that stand out to you are:
 				A passage that leads to a library
 				A staircase leading down into the basement
-				The front door of the tower
+				The front entrance of the tower
 				""";
 		System.out.print(text);
 	}
@@ -44,13 +47,21 @@ public class FoyerRoom extends Room {
 	public void printRoom1() {
 		String text = """
 				You're in the foyer of the tower
-				The room is lit up by multiple torches along the walls
+				The room is lit up by multiple torches lining the walls
+				From here, you can go to the library, basement, or front entrance
+				""";
+		System.out.print(text);
+	}
+
+	public void printBasementMove() {
+		String text = """
+				You walk down the staircase into the basement
 				""";
 		System.out.print(text);
 	}
 
 	@Override
-	public void parseAction(String action) {
+	public void tryAction(String action) {
 		String parsedAction = ActionParser.parseAction(action);
 
 		switch (parsedAction) {
@@ -64,11 +75,34 @@ public class FoyerRoom extends Room {
 				printRoom1();
 
 			}
-
 			break;
 
 		case "inv":
 			player.inventory.print();
+			break;
+
+		case "take torch":
+			if (!player.getInventory().contains(Item.TORCH)) {
+				player.inventory.add(Item.TORCH);
+				torchItem = false;
+				System.out.println("You take a torch from the wall");
+			} else {
+				System.out.println("You already have a torch");
+			}
+
+			break;
+
+		case "enter library":
+
+			break;
+
+		case "enter basement":
+			printBasementMove();
+			nextRoom = new BasementRoom();
+			break;
+
+		case "enter entrance":
+
 			break;
 
 		default:

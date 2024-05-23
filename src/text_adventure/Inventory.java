@@ -3,7 +3,7 @@ package text_adventure;
 import java.util.ArrayList;
 
 public class Inventory {
-	private ArrayList<Item> inventory = new ArrayList<>();
+	public ArrayList<Item> inventory = new ArrayList<>();
 
 	public void add(Item item) {
 		inventory.add(item);

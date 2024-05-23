@@ -9,6 +9,6 @@ public abstract class Room {
 
 	public abstract void run();
 
-	public abstract void parseAction(String action);
+	public abstract void tryAction(String action);
 
 }

@@ -26,11 +26,13 @@ public class TextAdventureGame {
 			try {
 				player.currentRoom.run();
 				String input = reader.readLine().toLowerCase();
-				player.currentRoom.parseAction(input);
+				player.currentRoom.tryAction(input);
 
 				// When the next room is selected, move the player to that room
 				if (player.currentRoom.nextRoom != null) {
 					Room nextRoom = player.currentRoom.nextRoom;
+					player.currentRoom.nextRoom = null;
+
 					if (nextRoom instanceof DungeonRoom)
 						player.currentRoom = dungeon;
 					else if (nextRoom instanceof FoyerRoom)
@@ -42,7 +44,6 @@ public class TextAdventureGame {
 					else if (nextRoom instanceof ExitRoom)
 						player.currentRoom = exit;
 
-					player.currentRoom.nextRoom = null;
 				}
 
 			} catch (Exception e) {

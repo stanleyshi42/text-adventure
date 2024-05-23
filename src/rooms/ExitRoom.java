@@ -4,13 +4,13 @@ public class ExitRoom extends Room {
 
 	@Override
 	public void run() {
-		// TODO Auto-generated method stub
-
+		System.out.println("You've escaped the wizard's tower!");
+		System.out.println("Congratulations!");
+		System.exit(0);
 	}
 
 	@Override
-	public void parseAction(String action) {
-		// TODO Auto-generated method stub
+	public void tryAction(String action) {
 
 	}
 

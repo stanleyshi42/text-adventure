@@ -1,12 +1,12 @@
 package tests;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.*;
 import org.junit.jupiter.api.Test;
 import text_adventure.ActionParser;
 
 public class ActionParserTest {
 	@Test
-	public void parseActionTest() {
+	public void testParseAction() {
 		assertEquals("inv", ActionParser.parseAction("check inv"));
 		assertEquals("inv", ActionParser.parseAction("check inv asdf"));
 		assertEquals("inv", ActionParser.parseAction("bag"));

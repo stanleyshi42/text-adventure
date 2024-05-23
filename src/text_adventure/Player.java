@@ -1,5 +1,7 @@
 package text_adventure;
 
+import java.util.ArrayList;
+
 import rooms.Room;
 
 public class Player {
@@ -13,6 +15,10 @@ public class Player {
 
 	public Player(String name) {
 		this.name = name;
+	}
+
+	public ArrayList<Item> getInventory() {
+		return inventory.inventory;
 	}
 
 }

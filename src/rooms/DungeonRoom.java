@@ -69,10 +69,10 @@ public class DungeonRoom extends Room {
 		System.out.println("You approach the stairway and start ascending its steps...");
 		try {
 			for (int i = 0; i < 0; i++) { // TODO increase wait time
-				Thread.sleep(1000);
+				Thread.sleep(500);
 				System.out.print(".");
 			}
-			Thread.sleep(1000);
+			Thread.sleep(500);
 		} catch (InterruptedException e) {
 			e.printStackTrace();
 		}
@@ -100,7 +100,7 @@ public class DungeonRoom extends Room {
 
 	@Override
 	// Perform player's action depending on the state of the room
-	public void parseAction(String action) {
+	public void tryAction(String action) {
 		String parsedAction = ActionParser.parseAction(action);
 
 		switch (parsedAction) {
@@ -136,6 +136,7 @@ public class DungeonRoom extends Room {
 			}
 			break;
 
+		case "take stairs":
 		case "leave":
 			switch (state) {
 			case 3:

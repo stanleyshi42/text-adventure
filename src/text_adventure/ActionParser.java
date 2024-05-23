@@ -7,6 +7,7 @@ public class ActionParser {
 		String[] actions = action.split(" "); // Split player's input into tokens
 
 		switch (action) {
+		case "hint":
 		case "commands":
 		case "instructions":
 		case "help":
@@ -52,12 +53,31 @@ public class ActionParser {
 		}
 
 		switch (action) {
+		case "move":
 		case "leave":
-		case "leave dungeon":
+			return "leave";
+		}
+
+		switch (action) {
+		case "move upstairs":
+		case "move up stairs":
 		case "go upstairs":
 		case "go up stairs":
+		case "move downstairs":
+		case "move down stairs":
+		case "go downstairs":
+		case "go down stairs":
 		case "take stairs":
-			return "leave";
+			return "take stairs";
+		}
+
+		switch (action) {
+		case "go to basement":
+		case "go basement":
+		case "enter basement":
+		case "enter the basement":
+		case "basement":
+			return "enter basement";
 		}
 
 		// If action didn't match anything, return it

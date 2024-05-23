@@ -9,7 +9,7 @@ public class LibraryRoom extends Room {
 	}
 
 	@Override
-	public void parseAction(String action) {
+	public void tryAction(String action) {
 		// TODO Auto-generated method stub
 
 	}
