@@ -23,6 +23,12 @@ public class BasementRoom extends Room {
 		case (2):
 			printScenario2();
 			break;
+		case (3):
+			printScenario3();
+			break;
+		case (4):
+			printScenario4();
+			break;
 		}
 
 	}
@@ -38,8 +44,23 @@ public class BasementRoom extends Room {
 	public void printScenario2() {
 		String text = """
 				You use your torch to light up the room, allowing you to see your surroundings
-				The basement is quite small and contains just three pedestals
-				Two of the pedestals hold a single unlit candle on them, while the third one is empty
+				The basement is quite small and just contains a pedestal holding an unlit candle sitting in a candle holder
+				""";
+		System.out.print(text);
+	}
+
+	public void printScenario3() {
+		String text = """
+				You light the candle and the pedestal disappears in a puff of smoke
+				A new pedestal takes its place. It holds an empty candle holder
+				""";
+		System.out.print(text);
+	}
+
+	public void printScenario4() {
+		String text = """
+				You place the lit candle in the candle holder
+
 				""";
 		System.out.print(text);
 	}
@@ -67,8 +88,15 @@ public class BasementRoom extends Room {
 	public void printRoom2() {
 		String text = """
 				With your torch, you're able to see the basement clearly now
-				The room contains three pedestals
-				Two of them hold an unlit candle, while the third one is empty
+				The room contains a pedestal holding an unlit candle in a candle holder
+				""";
+		System.out.print(text);
+	}
+
+	public void printRoom3() {
+		String text = """
+				With your torch, you're able to see the basement clearly now
+				The room contains a pedestal holding an empty candle holder
 				""";
 		System.out.print(text);
 	}
@@ -83,7 +111,8 @@ public class BasementRoom extends Room {
 
 	@Override
 	public void tryAction(String action) {
-		String parsedAction = ActionParser.parseAction(action);
+		String parsedAction = ActionParser.parseAction(player, action);
+		System.out.println(state);
 
 		switch (parsedAction) {
 		case "help":
@@ -98,11 +127,37 @@ public class BasementRoom extends Room {
 			player.inventory.print();
 			break;
 
+		case "combine":
+			break;
+
 		case "use torch":
-			if (player.inventory.has(Item.TORCH))
+			if (player.inventory.has(Item.TORCH) && state == 1)
+				nextState();
+			else if (player.inventory.has(Item.TORCH) && state == 2)
 				nextState();
 			else
 				System.out.println("Nothing happens");
+			break;
+
+		case "plaece lit candle":
+		case "use lit candle":
+			if (player.inventory.has(Item.LIT_CANDLE) && state == 3)
+				nextState();
+			else
+				System.out.println("Nothing happens");
+			break;
+
+		case "plaece candle":
+		case "use candle":
+			if (player.inventory.has(Item.CANDLE) && state == 3) {
+				System.out.println("You place your candle in the candle holder, but nothing happens");
+				System.out.println("You take the candle back");
+			} else
+				System.out.println("Nothing happens");
+			break;
+
+		case "take candle":
+			System.out.println("You try taking the candle, but it doesn't budge");
 			break;
 
 		case "leave":

@@ -42,7 +42,6 @@ public class FoyerRoom extends Room {
 				A passage leading to the wizard's private study
 				A staircase leading down into the basement
 				The entrance of the tower
-
 				""";
 		System.out.print(text);
 	}
@@ -91,7 +90,7 @@ public class FoyerRoom extends Room {
 
 	@Override
 	public void tryAction(String action) {
-		String parsedAction = ActionParser.parseAction(action);
+		String parsedAction = ActionParser.parseAction(player, action);
 
 		switch (parsedAction) {
 		case "help":
@@ -104,6 +103,9 @@ public class FoyerRoom extends Room {
 
 		case "inv":
 			player.inventory.print();
+			break;
+
+		case "combine":
 			break;
 
 		case "take torch":

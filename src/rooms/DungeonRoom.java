@@ -161,7 +161,7 @@ public class DungeonRoom extends Room {
 	@Override
 	// Perform player's action depending on the state of the room
 	public void tryAction(String action) {
-		String parsedAction = ActionParser.parseAction(action);
+		String parsedAction = ActionParser.parseAction(player, action);
 
 		switch (parsedAction) {
 		case "help":
@@ -174,6 +174,9 @@ public class DungeonRoom extends Room {
 
 		case "inv":
 			player.inventory.print();
+			break;
+
+		case "combine":
 			break;
 
 		case "kick door":

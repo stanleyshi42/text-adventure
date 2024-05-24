@@ -89,7 +89,7 @@ public class StudyRoom extends Room {
 
 	@Override
 	public void tryAction(String action) {
-		String parsedAction = ActionParser.parseAction(action);
+		String parsedAction = ActionParser.parseAction(player, action);
 
 		switch (parsedAction) {
 		case "help":
@@ -102,6 +102,9 @@ public class StudyRoom extends Room {
 
 		case "inv":
 			player.inventory.print();
+			break;
+
+		case "combine":
 			break;
 
 		case "coin":
