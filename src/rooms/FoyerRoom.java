@@ -48,7 +48,7 @@ public class FoyerRoom extends Room {
 		String text = """
 				You're in the foyer of the tower
 				The room is lit up by multiple torches lining the walls
-				From here, you can go to the library, basement, or front entrance
+				From here, you can go to the library, basement, or check the front entrance
 				""";
 		System.out.print(text);
 	}
@@ -109,8 +109,11 @@ public class FoyerRoom extends Room {
 			nextRoom = new BasementRoom();
 			break;
 
-		case "enter entrance":
+		case "check entrance":
+			switch (state) {
+			case 1:
 
+			}
 			break;
 
 		default:
@@ -118,5 +121,4 @@ public class FoyerRoom extends Room {
 		}
 
 	}
-
 }

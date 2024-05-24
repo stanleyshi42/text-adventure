@@ -36,7 +36,7 @@ public class BasementRoom extends Room {
 	public void printScenario2() {
 		String text = """
 				You use your torch to light up the room, allowing you to see your surroundings
-
+				
 				""";
 		System.out.print(text);
 	}
