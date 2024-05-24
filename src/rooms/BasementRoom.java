@@ -6,7 +6,6 @@ import text_adventure.Item;
 public class BasementRoom extends Room {
 
 	boolean hasBlueKey = true;
-	boolean hasCandle = true;
 
 	@Override
 	public void run() {
@@ -39,7 +38,8 @@ public class BasementRoom extends Room {
 	public void printScenario2() {
 		String text = """
 				You use your torch to light up the room, allowing you to see your surroundings
-				The basement is quite small and only contains a dusty desk and a chest
+				The basement is quite small and contains just three pedestals
+				Two of the pedestals hold a single unlit candle on them, while the third one is empty
 				""";
 		System.out.print(text);
 	}
@@ -66,8 +66,9 @@ public class BasementRoom extends Room {
 
 	public void printRoom2() {
 		String text = """
-				With your torch, you're able to see the room now
-				The room contains a desk and a chest
+				With your torch, you're able to see the basement clearly now
+				The room contains three pedestals
+				Two of them hold an unlit candle, while the third one is empty
 				""";
 		System.out.print(text);
 	}
@@ -91,30 +92,6 @@ public class BasementRoom extends Room {
 
 		case "inspect room":
 			printRoom();
-			break;
-
-		case "check desk":
-			if (this.hasBlueKey) {
-				player.inventory.add(Item.BLUE_KEY);
-				this.hasBlueKey = false;
-				System.out.println("You rummage through the desk and find a blue key!");
-				System.out.println("You take the key and put it in your backpack");
-			} else {
-				System.out.println("You rummage through the desk, but find nothing of value");
-			}
-
-			break;
-
-		case "open chest":
-		case "check chest":
-			if (this.hasCandle) {
-				player.inventory.add(Item.CANDLE);
-				this.hasCandle = false;
-				System.out.println("You open the chest, which contains a candle");
-				System.out.println("You put the candle in your backpack");
-			} else {
-				System.out.println("You open the chest again, but it's empty");
-			}
 			break;
 
 		case "inv":
