@@ -59,6 +59,7 @@ public class TextAdventureGame {
 				System.out.println("Enter your character's name:");
 				String input = reader.readLine();
 
+				// Initialize stuff
 				this.player = new Player(input);
 				player.currentRoom = dungeon; // Place the player in the starting room
 
