@@ -29,8 +29,8 @@ public class StudyRoom extends Room {
 
 	public void printScenario1() {
 		String text = """
-				As you are about to enter the library, its door slams shut and begins speaking
-				"If you want to enter my library, you must solve my riddle!"
+				As you are about to enter the wizard's private study, its door slams shut and begins speaking
+				"Halt! If you want to enter this study, you must solve my riddle!"
 				"What has a head and a tail, but no body?"
 				"If you check your pockets, you may have plenty!"
 				""";
@@ -41,7 +41,7 @@ public class StudyRoom extends Room {
 	public void printScenario2() {
 		String text = """
 				"Correct!"
-				The door opens and you enter the library
+				The door opens and you enter the study
 				""";
 		System.out.print(text);
 	}
@@ -60,7 +60,7 @@ public class StudyRoom extends Room {
 
 	public void printRoom1() {
 		String text = """
-				You stand at the entrance to the library
+				You stand at the entrance to the study
 				The talking door won't let you in until you solve its riddle
 				"What has a head and a tail, but no body?"
 				"If you check your pockets, you may have plenty!"
@@ -78,7 +78,7 @@ public class StudyRoom extends Room {
 
 	public void printEnterFoyer() {
 		String text = """
-				You leave the library and enter the foyer
+				You leave the study and enter the foyer
 				=========================================
 				""";
 		System.out.print(text);
