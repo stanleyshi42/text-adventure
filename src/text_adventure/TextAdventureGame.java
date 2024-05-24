@@ -25,7 +25,7 @@ public class TextAdventureGame {
 		while (true) {
 			try {
 				player.currentRoom.run();
-				String input = reader.readLine().toLowerCase();
+				String input = reader.readLine();
 				player.currentRoom.tryAction(input);
 
 				// When the next room is selected, move to that room and print descriptive text

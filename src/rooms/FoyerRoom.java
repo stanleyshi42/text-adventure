@@ -38,7 +38,8 @@ public class FoyerRoom extends Room {
 				You enter a large foyer with several doors and passages
 				The ones that stand out to you are:
 
-				A passage that leads to the library
+				The staircase leading back into the dungeon
+				A passage leading to the wizard's private study
 				A staircase leading down into the basement
 				The entrance of the tower
 
@@ -57,33 +58,33 @@ public class FoyerRoom extends Room {
 
 	public void printRoom1() {
 		String text = """
-				You're in the foyer of the tower
+				You are in the foyer of the tower
 				The room is illuminated up by multiple torches lining the walls
-				From here, you can go to the library, basement, or the tower's entrance
+				From here, you can go to the dungeon, study, basement, or the tower's entrance
 				""";
 		System.out.print(text);
 	}
 
 	public void printDungeonMove() {
 		String text = """
-				You walk down the staircase into the dungeon
-				============================================
+				You descend down into the dungeon
+				=================================
 				""";
 		System.out.print(text);
 	}
 
-	public void printLibraryMove() {
+	public void printStudyMove() {
 		String text = """
-				You walk down the passage towards the library
-				=============================================
+				You head down the passage towards the wizard's study
+				====================================================
 				""";
 		System.out.print(text);
 	}
 
 	public void printBasementMove() {
 		String text = """
-				You walk down the staircase into the basement
-				=============================================
+				You take the staircase into the basement
+				========================================
 				""";
 		System.out.print(text);
 	}
@@ -121,9 +122,9 @@ public class FoyerRoom extends Room {
 			nextRoom = new DungeonRoom();
 			break;
 
-		case "enter library":
-			printLibraryMove();
-			nextRoom = new LibraryRoom();
+		case "enter study":
+			printStudyMove();
+			nextRoom = new StudyRoom();
 			break;
 
 		case "enter basement":

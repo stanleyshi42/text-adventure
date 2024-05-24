@@ -1,6 +1,6 @@
 package rooms;
 
-public class ExitRoom extends Room {
+public class WinRoom extends Room {
 
 	@Override
 	public void run() {

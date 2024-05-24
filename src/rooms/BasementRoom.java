@@ -4,7 +4,9 @@ import text_adventure.ActionParser;
 import text_adventure.Item;
 
 public class BasementRoom extends Room {
+
 	boolean hasBlueKey = true;
+	boolean hasCandle = true;
 
 	@Override
 	public void run() {
@@ -37,7 +39,7 @@ public class BasementRoom extends Room {
 	public void printScenario2() {
 		String text = """
 				You use your torch to light up the room, allowing you to see your surroundings
-				The basement is quite small and only contains a dusty desk and a bookshelf
+				The basement is quite small and only contains a dusty desk and a chest
 				""";
 		System.out.print(text);
 	}
@@ -65,7 +67,7 @@ public class BasementRoom extends Room {
 	public void printRoom2() {
 		String text = """
 				With your torch, you're able to see the room now
-				The room contains a desk and a bookshelf
+				The room contains a desk and a chest
 				""";
 		System.out.print(text);
 	}
@@ -103,8 +105,16 @@ public class BasementRoom extends Room {
 
 			break;
 
-		case "check bookshelf":
-
+		case "open chest":
+		case "check chest":
+			if (this.hasCandle) {
+				player.inventory.add(Item.CANDLE);
+				this.hasCandle = false;
+				System.out.println("You open the chest, which contains a candle");
+				System.out.println("You put the candle in your backpack");
+			} else {
+				System.out.println("You open the chest again, but it's empty");
+			}
 			break;
 
 		case "inv":

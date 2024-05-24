@@ -3,7 +3,7 @@ package text_adventure;
 // Takes the player's input and parses it
 public class ActionParser {
 	public static String parseAction(String action) {
-		action = action.trim();
+		action = action.trim().toLowerCase();
 		String[] actions = action.split(" "); // Split player's input into tokens
 
 		// General actions
@@ -63,19 +63,35 @@ public class ActionParser {
 		}
 
 		switch (actions[0]) {
+		case "check":
+		case "inspect":
+			if (actions.length > 1)
+				switch (actions[1]) {
+				case "ground":
+					return "check ground";
+				case "floor":
+					return "check ground";
+				}
+		}
+
+		switch (actions[0]) {
 		case "enter":
 		case "move":
 		case "go":
 		case "check":
 			if (actions.length > 1)
 				switch (actions[1]) {
+				case "dungeon":
+					return "enter dungeon";
+				case "foyer":
+					return "enter foyer";
 				case "basement":
 					return "enter basement";
 				case "library":
 					return "enter library";
+				case "entrance":
+					return "enter entrance";
 				}
-			break;
-
 		}
 
 		switch (action) {

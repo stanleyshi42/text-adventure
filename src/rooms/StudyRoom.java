@@ -2,7 +2,9 @@ package rooms;
 
 import text_adventure.ActionParser;
 
-public class LibraryRoom extends Room {
+public class StudyRoom extends Room {
+
+	boolean hasYellowKey = true;
 
 	@Override
 	public void run() {
@@ -27,7 +29,7 @@ public class LibraryRoom extends Room {
 
 	public void printScenario1() {
 		String text = """
-				Just as you try to enter the library, its door slams shut and starts talking
+				As you are about to enter the library, its door slams shut and begins speaking
 				"If you want to enter my library, you must solve my riddle!"
 				"What has a head and a tail, but no body?"
 				"If you check your pockets, you may have plenty!"
@@ -35,6 +37,7 @@ public class LibraryRoom extends Room {
 		System.out.print(text);
 	}
 
+	// TODO
 	public void printScenario2() {
 		String text = """
 				"Correct!"
