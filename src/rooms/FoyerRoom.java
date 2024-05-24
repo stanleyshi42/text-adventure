@@ -44,10 +44,19 @@ public class FoyerRoom extends Room {
 		System.out.print(text);
 	}
 
+	public void printRoom() {
+		switch (state) {
+		case 1:
+			printRoom1();
+			break;
+
+		}
+	}
+
 	public void printRoom1() {
 		String text = """
 				You're in the foyer of the tower
-				The room is lit up by multiple torches lining the walls
+				The room is illuminated up by multiple torches lining the walls
 				From here, you can go to the library, basement, or check the front entrance
 				""";
 		System.out.print(text);
@@ -56,6 +65,7 @@ public class FoyerRoom extends Room {
 	public void printLibraryMove() {
 		String text = """
 				You walk down the passage towards the library
+				=============================================
 				""";
 		System.out.print(text);
 	}
@@ -63,6 +73,7 @@ public class FoyerRoom extends Room {
 	public void printBasementMove() {
 		String text = """
 				You walk down the staircase into the basement
+				=============================================
 				""";
 		System.out.print(text);
 	}
@@ -77,11 +88,7 @@ public class FoyerRoom extends Room {
 			break;
 
 		case "inspect room":
-			switch (state) {
-			case 1:
-				printRoom1();
-
-			}
+			printRoom();
 			break;
 
 		case "inv":

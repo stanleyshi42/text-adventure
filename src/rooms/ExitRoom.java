@@ -10,8 +10,11 @@ public class ExitRoom extends Room {
 	}
 
 	@Override
-	public void tryAction(String action) {
+	public void printRoom() {
+	}
 
+	@Override
+	public void tryAction(String action) {
 	}
 
 }

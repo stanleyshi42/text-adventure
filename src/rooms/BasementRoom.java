@@ -1,8 +1,10 @@
 package rooms;
 
 import text_adventure.ActionParser;
+import text_adventure.Item;
 
 public class BasementRoom extends Room {
+	boolean blueKeyItem = true;
 
 	@Override
 	public void run() {
@@ -32,18 +34,38 @@ public class BasementRoom extends Room {
 		System.out.print(text);
 	}
 
-	// TODO
 	public void printScenario2() {
 		String text = """
 				You use your torch to light up the room, allowing you to see your surroundings
-				
+				The basement is quite small and contains just a dusty desk and a bookshelf
 				""";
 		System.out.print(text);
 	}
 
+	public void printRoom() {
+		switch (state) {
+		case 1:
+			printRoom1();
+			break;
+		case 2:
+			printRoom2();
+			break;
+
+		}
+	}
+
 	public void printRoom1() {
 		String text = """
-				You try to look around, but it's too dark to see anything
+				You're in the basement, but it's too dark to see anything
+				If only you had a light source...
+				""";
+		System.out.print(text);
+	}
+
+	public void printRoom2() {
+		String text = """
+				With your torch, you're able to see the room now
+				The room contains a desk and a bookshelf
 				""";
 		System.out.print(text);
 	}
@@ -51,6 +73,7 @@ public class BasementRoom extends Room {
 	public void printEnterFoyer() {
 		String text = """
 				You leave the basement and enter the foyer
+				==========================================
 				""";
 		System.out.print(text);
 	}
@@ -65,11 +88,23 @@ public class BasementRoom extends Room {
 			break;
 
 		case "inspect room":
-			switch (state) {
-			case 1:
-				printRoom1();
+			printRoom();
+			break;
 
+		case "check desk":
+			if (blueKeyItem) {
+				player.inventory.add(Item.BLUE_KEY);
+				blueKeyItem = false;
+				System.out.println("You rummage through the desk and find a blue key!");
+				System.out.println("You take the key and put it in your backpack");
+			} else {
+				System.out.println("You rummage through the desk, but find nothing of value");
 			}
+
+			break;
+
+		case "check bookshelf":
+
 			break;
 
 		case "inv":
@@ -77,13 +112,19 @@ public class BasementRoom extends Room {
 			break;
 
 		case "use torch":
-			nextState();
+			if (player.inventory.has(Item.TORCH))
+				nextState();
+			else
+				System.out.println("Nothing happens");
 			break;
 
 		case "leave":
 			printEnterFoyer();
 			nextRoom = new FoyerRoom();
 			break;
+
+		default:
+			System.out.println("Nothing happens");
 
 		}
 	}

@@ -43,10 +43,24 @@ public class LibraryRoom extends Room {
 		System.out.print(text);
 	}
 
+	public void printRoom() {
+		switch (state) {
+		case 1:
+			printRoom1();
+			break;
+		case 2:
+			printRoom2();
+			break;
+
+		}
+	}
+
 	public void printRoom1() {
 		String text = """
 				You stand at the entrance to the library
-				The talking book won't let you in until you solve its riddle
+				The talking door won't let you in until you solve its riddle
+				"What has a head and a tail, but no body?"
+				"If you check your pockets, you may have plenty!"
 				""";
 		System.out.print(text);
 	}
@@ -54,7 +68,7 @@ public class LibraryRoom extends Room {
 	// TODO
 	public void printRoom2() {
 		String text = """
-
+				print room 2
 				""";
 		System.out.print(text);
 	}
@@ -62,6 +76,7 @@ public class LibraryRoom extends Room {
 	public void printEnterFoyer() {
 		String text = """
 				You leave the library and enter the foyer
+				=========================================
 				""";
 		System.out.print(text);
 	}
@@ -76,11 +91,7 @@ public class LibraryRoom extends Room {
 			break;
 
 		case "inspect room":
-			switch (state) {
-			case 1:
-				printRoom1();
-
-			}
+			printRoom();
 			break;
 
 		case "inv":

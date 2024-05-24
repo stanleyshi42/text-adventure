@@ -79,6 +79,7 @@ public class DungeonRoom extends Room {
 
 		System.out.println();
 		System.out.println("After what feels like an eternity, you finally reach the top of the stairway");
+		System.out.println("============================================================================");
 
 		// Select the next room to move to
 		nextRoom = new FoyerRoom();
@@ -89,9 +90,22 @@ public class DungeonRoom extends Room {
 		System.out.println("This is the dungeon you awakened in. There doesn't appear to be anything of use here");
 	}
 
+	// Print room text based on the state of the room
+	public void printRoom() {
+		switch (state) {
+		case 1:
+		case 2:
+			printRoom1();
+			break;
+		case 3:
+			printRoom3();
+			break;
+		}
+	}
+
 	public void printRoom1() {
 		System.out.println(
-				"You're in a tiny cell in a dark dungeon. All you can see is the ancient, rusty cell door in front of you. You could probably force it open with a good kick");
+				"You're trapped in the tiny cell of a dark dungeon. All you can see is the ancient, rusty cell door in front of you. You could probably force it open with a good kick");
 	}
 
 	public void printRoom3() {
@@ -109,16 +123,7 @@ public class DungeonRoom extends Room {
 			break;
 
 		case "inspect room":
-			switch (state) {
-			case 1:
-			case 2:
-				printRoom1();
-				break;
-			case 3:
-				printRoom3();
-				break;
-			}
-
+			printRoom();
 			break;
 
 		case "inv":
@@ -126,6 +131,7 @@ public class DungeonRoom extends Room {
 			break;
 
 		case "kick door":
+			// Check if we are in a state where the door can be kicked down
 			switch (state) {
 			case 1:
 				nextState();
@@ -141,6 +147,7 @@ public class DungeonRoom extends Room {
 
 		case "take stairs":
 		case "leave":
+			// Check if we are in a state where we are able leave the room
 			switch (state) {
 			case 3:
 				nextState();

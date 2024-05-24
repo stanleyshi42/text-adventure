@@ -7,7 +7,9 @@ public abstract class Room {
 	int state = 0;
 	public Room nextRoom;
 
-	public abstract void run();
+	public abstract void run(); // Called when first entering a room
+
+	public abstract void printRoom(); // Prints descriptive text of the room
 
 	public abstract void tryAction(String action);
 
