@@ -6,7 +6,7 @@ import text_adventure.Player;
 
 public class FoyerRoom extends Room {
 
-	boolean torchItem = true;
+	boolean hasTorch = true;
 
 	public FoyerRoom() {
 
@@ -37,9 +37,11 @@ public class FoyerRoom extends Room {
 		String text = """
 				You enter a large foyer with several doors and passages
 				The ones that stand out to you are:
-				A passage that leads to a library
+
+				A passage that leads to the library
 				A staircase leading down into the basement
-				The front entrance of the tower
+				The entrance of the tower
+
 				""";
 		System.out.print(text);
 	}
@@ -57,7 +59,15 @@ public class FoyerRoom extends Room {
 		String text = """
 				You're in the foyer of the tower
 				The room is illuminated up by multiple torches lining the walls
-				From here, you can go to the library, basement, or check the front entrance
+				From here, you can go to the library, basement, or the tower's entrance
+				""";
+		System.out.print(text);
+	}
+
+	public void printDungeonMove() {
+		String text = """
+				You walk down the staircase into the dungeon
+				============================================
 				""";
 		System.out.print(text);
 	}
@@ -96,14 +106,19 @@ public class FoyerRoom extends Room {
 			break;
 
 		case "take torch":
-			if (!player.getInventory().contains(Item.TORCH)) {
+			if (this.hasTorch) {
 				player.inventory.add(Item.TORCH);
-				torchItem = false;
+				this.hasTorch = false;
 				System.out.println("You take a torch from the wall");
 			} else {
 				System.out.println("You already have a torch");
 			}
 
+			break;
+
+		case "enter dungeon":
+			printDungeonMove();
+			nextRoom = new DungeonRoom();
 			break;
 
 		case "enter library":
@@ -116,7 +131,7 @@ public class FoyerRoom extends Room {
 			nextRoom = new BasementRoom();
 			break;
 
-		case "check entrance":
+		case "enter entrance":
 			switch (state) {
 			case 1:
 
