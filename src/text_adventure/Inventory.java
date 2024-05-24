@@ -5,8 +5,8 @@ import java.util.ArrayList;
 public class Inventory {
 	public ArrayList<Item> inventory = new ArrayList<>();
 
-	public void add(Item item) {
-		inventory.add(item);
+	public boolean add(Item item) {
+		return inventory.add(item);
 	}
 
 	public boolean has(Item item) {

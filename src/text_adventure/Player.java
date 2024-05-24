@@ -1,7 +1,6 @@
 package text_adventure;
 
 import java.util.ArrayList;
-
 import rooms.Room;
 
 public class Player {

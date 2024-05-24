@@ -2,7 +2,7 @@ package text_adventure;
 
 // Takes the player's input and parses it
 public class ActionParser {
-	public static String parseAction(String action) {
+	public static String parseAction(Player player, String action) {
 		action = action.trim().toLowerCase();
 		String[] actions = action.split(" "); // Split player's input into tokens
 
@@ -85,10 +85,10 @@ public class ActionParser {
 					return "enter dungeon";
 				case "foyer":
 					return "enter foyer";
-				case "basement":
-					return "enter basement";
 				case "study":
 					return "enter study";
+				case "basement":
+					return "enter basement";
 				case "entrance":
 					return "enter entrance";
 				}
@@ -104,6 +104,19 @@ public class ActionParser {
 		case "check progress":
 		case "progress":
 			return "check progress";
+		}
+
+		// Logic for combining two items
+		switch (actions[0]) {
+		case "combine":
+			if (actions.length > 2) {
+				if (Item.combine(player, actions[1], actions[2]) != null) {
+					System.out.println("You light the candle with your torch");
+
+				}
+			}
+			return "combine";
+
 		}
 
 		// More specific actions
@@ -131,7 +144,7 @@ public class ActionParser {
 				take [item]
 				use [item]
 
-				You can try to combine items with:
+				You can try combining items with:
 				combine [item] [item]
 
 				If you ever want to do something, try:

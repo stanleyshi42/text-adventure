@@ -5,8 +5,8 @@ import java.io.InputStreamReader;
 
 import rooms.BasementRoom;
 import rooms.DungeonRoom;
-import rooms.ExitRoom;
-import rooms.LibraryRoom;
+import rooms.WinRoom;
+import rooms.StudyRoom;
 import rooms.FoyerRoom;
 import rooms.Room;
 
@@ -17,9 +17,9 @@ public class TextAdventureGame {
 	// Instantiate all of the game's rooms
 	public DungeonRoom dungeon = new DungeonRoom();
 	public FoyerRoom mainHall = new FoyerRoom();
-	public LibraryRoom library = new LibraryRoom();
+	public StudyRoom library = new StudyRoom();
 	public BasementRoom basement = new BasementRoom();
-	public ExitRoom exit = new ExitRoom();
+	public WinRoom exit = new WinRoom();
 
 	private void gameLoop() {
 		while (true) {
@@ -39,13 +39,13 @@ public class TextAdventureGame {
 					} else if (nextRoom instanceof FoyerRoom) {
 						player.currentRoom = mainHall;
 						player.currentRoom.printRoom();
-					} else if (nextRoom instanceof LibraryRoom) {
+					} else if (nextRoom instanceof StudyRoom) {
 						player.currentRoom = library;
 						player.currentRoom.printRoom();
 					} else if (nextRoom instanceof BasementRoom) {
 						player.currentRoom = basement;
 						player.currentRoom.printRoom();
-					} else if (nextRoom instanceof ExitRoom) {
+					} else if (nextRoom instanceof WinRoom) {
 						player.currentRoom = exit;
 						player.currentRoom.printRoom();
 					}
