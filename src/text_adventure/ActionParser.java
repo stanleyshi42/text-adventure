@@ -6,6 +6,7 @@ public class ActionParser {
 		action = action.trim();
 		String[] actions = action.split(" "); // Split player's input into tokens
 
+		// General actions
 		switch (action) {
 		case "hint":
 		case "commands":
@@ -78,17 +79,24 @@ public class ActionParser {
 		}
 
 		switch (action) {
+		case "leave":
+		case "leave room":
+			return "leave";
+		}
+
+		switch (action) {
+		case "check progress":
+		case "progress":
+			return "check progress";
+		}
+
+		// More specific actions
+		switch (action) {
 		case "kick":
 			System.out.println("Kick what?");
 			return "";
 		case "kick door":
 			return "kick door";
-		}
-
-		switch (action) {
-		case "leave":
-		case "leave room":
-			return "leave";
 		}
 
 		// If action didn't match anything, return it
@@ -98,6 +106,7 @@ public class ActionParser {
 	public static void printHelp() {
 		String text = """
 				A voice in your head tells you...
+
 				Some common actions you can input include:
 				check room
 				check bag
@@ -105,6 +114,12 @@ public class ActionParser {
 				leave
 				take [item]
 				use [item]
+
+				You can try to combine items with:
+				combine [item] [item]
+
+				If you ever want to do something, try:
+				[verb] [object]
 				""";
 		System.out.print(text);
 	}

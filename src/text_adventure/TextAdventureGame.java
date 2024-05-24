@@ -28,7 +28,7 @@ public class TextAdventureGame {
 				String input = reader.readLine().toLowerCase();
 				player.currentRoom.tryAction(input);
 
-				// When the next room is selected, move the player to that room
+				// When the next room is selected, move to that room and print descriptive text
 				if (player.currentRoom.nextRoom != null) {
 					Room nextRoom = player.currentRoom.nextRoom;
 					player.currentRoom.nextRoom = null;
@@ -36,7 +36,6 @@ public class TextAdventureGame {
 					if (nextRoom instanceof DungeonRoom) {
 						player.currentRoom = dungeon;
 						player.currentRoom.printRoom();
-						;
 					} else if (nextRoom instanceof FoyerRoom) {
 						player.currentRoom = mainHall;
 						player.currentRoom.printRoom();
@@ -59,6 +58,7 @@ public class TextAdventureGame {
 		}
 	}
 
+	// Initialize various values for the game
 	public void play() {
 		while (true) {
 			try {
@@ -66,7 +66,6 @@ public class TextAdventureGame {
 				System.out.println("Enter your character's name:");
 				String input = reader.readLine();
 
-				// Initialize stuff
 				this.player = new Player(input);
 				player.currentRoom = dungeon; // Place the player in the starting room
 
