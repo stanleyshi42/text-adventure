@@ -107,6 +107,11 @@ public class StudyRoom extends Room {
 		case "combine":
 			break;
 
+		case "leave":
+			printEnterFoyer();
+			nextRoom = new FoyerRoom();
+			break;
+
 		case "coin":
 		case "coins":
 		case "a coin":
@@ -152,11 +157,6 @@ public class StudyRoom extends Room {
 					""";
 			System.out.print(text);
 			this.nextRoom = new DungeonRoom();
-			break;
-
-		case "leave":
-			printEnterFoyer();
-			nextRoom = new FoyerRoom();
 			break;
 
 		default:

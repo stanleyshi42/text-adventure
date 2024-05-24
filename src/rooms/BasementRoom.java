@@ -144,6 +144,11 @@ public class BasementRoom extends Room {
 		case "combine":
 			break;
 
+		case "leave":
+			printEnterFoyer();
+			nextRoom = new FoyerRoom();
+			break;
+
 		case "use torch":
 			if (player.inventory.has(Item.TORCH) && state == 1)
 				nextState();
@@ -175,11 +180,6 @@ public class BasementRoom extends Room {
 				nextState();
 			else
 				System.out.println("Nothing happens");
-			break;
-
-		case "leave":
-			printEnterFoyer();
-			nextRoom = new FoyerRoom();
 			break;
 
 		default:

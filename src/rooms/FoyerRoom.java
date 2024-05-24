@@ -88,6 +88,14 @@ public class FoyerRoom extends Room {
 		System.out.print(text);
 	}
 
+	public void printEntranceMove() {
+		String text = """
+				You walk to the entrance of the tower
+				=====================================
+				""";
+		System.out.print(text);
+	}
+
 	@Override
 	public void tryAction(String action) {
 		String parsedAction = ActionParser.parseAction(player, action);
@@ -135,10 +143,8 @@ public class FoyerRoom extends Room {
 			break;
 
 		case "enter entrance":
-			switch (state) {
-			case 1:
-
-			}
+			printEntranceMove();
+			nextRoom = new EntranceRoom();
 			break;
 
 		default:
