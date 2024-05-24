@@ -9,6 +9,10 @@ public class Inventory {
 		inventory.add(item);
 	}
 
+	public boolean has(Item item) {
+		return inventory.contains(item);
+	}
+
 	public void print() {
 		System.out.println("You rummage through your backpack and find...");
 		if (inventory.isEmpty())
