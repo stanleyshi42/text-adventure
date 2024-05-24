@@ -1,9 +1,12 @@
 package rooms;
 
 import text_adventure.ActionParser;
+import text_adventure.Item;
 import text_adventure.Player;
 
 public class DungeonRoom extends Room {
+
+	boolean hasRedKey = true;
 
 	public DungeonRoom() {
 
@@ -15,7 +18,7 @@ public class DungeonRoom extends Room {
 
 	@Override
 	public void run() {
-		// The first time we run this room, go to the next state
+		// The first time we run this room, go to the state 1
 		if (state == 0)
 			nextState();
 	}
@@ -36,6 +39,9 @@ public class DungeonRoom extends Room {
 			break;
 		case (4):
 			printScenario4();
+			break;
+		case (5):
+			printScenario5();
 			break;
 		}
 	}
@@ -66,6 +72,73 @@ public class DungeonRoom extends Room {
 	}
 
 	public void printScenario4() {
+		String text = """
+				You use your torch to light up the room
+				Now that you can see better, you notice something shiny on the ground
+				""";
+		System.out.print(text);
+	}
+
+	public void printScenario5() {
+		String text = """
+				You inspect the shiny object on the ground and see that it is a red key
+				You put the key in your backpack
+				""";
+		System.out.print(text);
+	}
+
+	// Print descriptive room text based on the state of the room
+	public void printRoom() {
+		switch (state) {
+		case 1:
+		case 2:
+			printRoom1();
+			break;
+		case 3:
+			printRoom3();
+			break;
+		case 4:
+			printRoom4();
+			break;
+		case 5:
+			printRoom5();
+			break;
+		}
+	}
+
+	public void printRoom1() {
+		String text = """
+				You're trapped in the tiny cell of a dark dungeon
+				All you can see is the ancient, rusty cell door in front of you. You could probably force it open with a good kick
+				""";
+		System.out.print(text);
+
+	}
+
+	public void printRoom3() {
+		String text = """
+				You're in a long, dimly lit dungeon hallway. There are stairs leading up at the end of the hall
+				""";
+		System.out.print(text);
+	}
+
+	public void printRoom4() {
+		String text = """
+				You're in a long dungeon hallway. There are stairs leading up at the end of the hall
+				With your torch, you are able to see better and you notice something shiny on the ground
+				""";
+		System.out.print(text);
+	}
+
+	public void printRoom5() {
+		String text = """
+				You're in a long dungeon hallway. There are stairs leading up at the end of the hall
+				It looks like there's nothing left to do here
+				""";
+		System.out.print(text);
+	}
+
+	public void printFoyerMove() {
 		System.out.println("You approach the stairway and start ascending its steps...");
 		try {
 			for (int i = 0; i < 0; i++) { // TODO increase wait time
@@ -78,38 +151,11 @@ public class DungeonRoom extends Room {
 		}
 
 		System.out.println();
-		System.out.println("After what feels like an eternity, you finally reach the top of the stairway");
-		System.out.println("============================================================================");
+		System.out.println("After what feels like an eternity, you finally reach the top of the stairway!");
+		System.out.println("=============================================================================");
 
 		// Select the next room to move to
 		nextRoom = new FoyerRoom();
-		state++;
-	}
-
-	public void printScenario5() {
-		System.out.println("This is the dungeon you awakened in. There doesn't appear to be anything of use here");
-	}
-
-	// Print room text based on the state of the room
-	public void printRoom() {
-		switch (state) {
-		case 1:
-		case 2:
-			printRoom1();
-			break;
-		case 3:
-			printRoom3();
-			break;
-		}
-	}
-
-	public void printRoom1() {
-		System.out.println(
-				"You're trapped in the tiny cell of a dark dungeon. All you can see is the ancient, rusty cell door in front of you. You could probably force it open with a good kick");
-	}
-
-	public void printRoom3() {
-		System.out.println("You're in a long dungeon hallway. There are stairs leading up at the end of the hall");
 	}
 
 	@Override
@@ -148,12 +194,25 @@ public class DungeonRoom extends Room {
 		case "take stairs":
 		case "leave":
 			// Check if we are in a state where we are able leave the room
-			switch (state) {
-			case 3:
+			if (state >= 3)
+				printFoyerMove();
+			else
+				System.out.println("Nothing happens");
+			break;
+
+		case "use torch":
+			if (player.inventory.has(Item.TORCH) && state == 3)
 				nextState();
-				break;
-			case 5:
-				printScenario4();
+			else
+				System.out.println("Nothing happens");
+			break;
+
+		case "check ground":
+			switch (state) {
+			case 4:
+				player.inventory.add(Item.RED_KEY);
+				hasRedKey = false;
+				nextState();
 				break;
 			default:
 				System.out.println("Nothing happens");
