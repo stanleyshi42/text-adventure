@@ -44,6 +44,39 @@ public class ActionParser {
 			return "inv";
 		}
 
+		switch (actions[0]) {
+		case "move":
+		case "go":
+			if (actions.length > 1)
+				switch (actions[1]) {
+				case "upstairs":
+				case "up stairs":
+				case "downstairs":
+				case "down stairs":
+					return "take stairs";
+				}
+			break;
+		case "take stairs":
+			return "take stairs";
+
+		}
+
+		switch (actions[0]) {
+		case "enter":
+		case "move":
+		case "go":
+		case "check":
+			if (actions.length > 1)
+				switch (actions[1]) {
+				case "basement":
+					return "enter basement";
+				case "library":
+					return "enter library";
+				}
+			break;
+
+		}
+
 		switch (action) {
 		case "kick":
 			System.out.println("Kick what?");
@@ -58,28 +91,6 @@ public class ActionParser {
 			return "leave";
 		}
 
-		switch (action) {
-		case "move upstairs":
-		case "move up stairs":
-		case "go upstairs":
-		case "go up stairs":
-		case "move downstairs":
-		case "move down stairs":
-		case "go downstairs":
-		case "go down stairs":
-		case "take stairs":
-			return "take stairs";
-		}
-
-		switch (action) {
-		case "go to basement":
-		case "go basement":
-		case "enter basement":
-		case "enter the basement":
-		case "basement":
-			return "enter basement";
-		}
-
 		// If action didn't match anything, return it
 		return action;
 	}
@@ -90,7 +101,8 @@ public class ActionParser {
 				Some common actions you can input include:
 				check room
 				check bag
-				leave room
+				enter [room]
+				leave
 				take [item]
 				use [item]
 				""";
