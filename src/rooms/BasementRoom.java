@@ -5,7 +5,7 @@ import text_adventure.Item;
 
 public class BasementRoom extends Room {
 
-	boolean hasBlueKey = true;
+	boolean hasRedKey = true;
 
 	@Override
 	public void run() {
@@ -59,8 +59,9 @@ public class BasementRoom extends Room {
 
 	public void printScenario4() {
 		String text = """
-				You place the lit candle in the candle holder
-
+				You place your lit candle in the candle holder
+				From the candle's flame, a red key emerges and flies into your backpack!
+				With that, the pedestal disappears in a puff of smoke
 				""";
 		System.out.print(text);
 	}
@@ -72,6 +73,12 @@ public class BasementRoom extends Room {
 			break;
 		case 2:
 			printRoom2();
+			break;
+		case 3:
+			printRoom3();
+			break;
+		case 4:
+			printRoom4();
 			break;
 
 		}
@@ -97,6 +104,14 @@ public class BasementRoom extends Room {
 		String text = """
 				With your torch, you're able to see the basement clearly now
 				The room contains a pedestal holding an empty candle holder
+				""";
+		System.out.print(text);
+	}
+
+	public void printRoom4() {
+		String text = """
+				With your torch, you're able to see the basement clearly now
+				It looks like there's nothing left to do here
 				""";
 		System.out.print(text);
 	}
