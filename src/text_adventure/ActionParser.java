@@ -87,8 +87,8 @@ public class ActionParser {
 					return "enter foyer";
 				case "basement":
 					return "enter basement";
-				case "library":
-					return "enter library";
+				case "study":
+					return "enter study";
 				case "entrance":
 					return "enter entrance";
 				}
