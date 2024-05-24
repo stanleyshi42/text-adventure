@@ -127,7 +127,6 @@ public class BasementRoom extends Room {
 	@Override
 	public void tryAction(String action) {
 		String parsedAction = ActionParser.parseAction(player, action);
-		System.out.println(state);
 
 		switch (parsedAction) {
 		case "help":
@@ -154,10 +153,9 @@ public class BasementRoom extends Room {
 				System.out.println("Nothing happens");
 			break;
 
-		case "plaece lit candle":
-		case "use lit candle":
-			if (player.inventory.has(Item.LIT_CANDLE) && state == 3)
-				nextState();
+		case "take candle":
+			if (state == 2)
+				System.out.println("You try taking the candle, but it doesn't budge");
 			else
 				System.out.println("Nothing happens");
 			break;
@@ -171,8 +169,12 @@ public class BasementRoom extends Room {
 				System.out.println("Nothing happens");
 			break;
 
-		case "take candle":
-			System.out.println("You try taking the candle, but it doesn't budge");
+		case "plaece lit candle":
+		case "use lit candle":
+			if (player.inventory.has(Item.LIT_CANDLE) && state == 3)
+				nextState();
+			else
+				System.out.println("Nothing happens");
 			break;
 
 		case "leave":
