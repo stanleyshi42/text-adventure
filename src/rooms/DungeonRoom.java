@@ -6,7 +6,7 @@ import text_adventure.Player;
 
 public class DungeonRoom extends Room {
 
-	boolean hasRedKey = true;
+	boolean hasBlueKey = true;
 
 	public DungeonRoom() {
 
@@ -81,7 +81,7 @@ public class DungeonRoom extends Room {
 
 	public void printScenario5() {
 		String text = """
-				You inspect the shiny object on the ground and see that it is a red key
+				You inspect the shiny object on the ground and see that it is a blue key
 				You put the key in your backpack
 				""";
 		System.out.print(text);
@@ -213,8 +213,8 @@ public class DungeonRoom extends Room {
 		case "check ground":
 			switch (state) {
 			case 4:
-				player.inventory.add(Item.RED_KEY);
-				hasRedKey = false;
+				player.inventory.add(Item.BLUE_KEY);
+				hasBlueKey = false;
 				nextState();
 				break;
 			default:
