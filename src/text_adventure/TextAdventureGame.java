@@ -33,16 +33,23 @@ public class TextAdventureGame {
 					Room nextRoom = player.currentRoom.nextRoom;
 					player.currentRoom.nextRoom = null;
 
-					if (nextRoom instanceof DungeonRoom)
+					if (nextRoom instanceof DungeonRoom) {
 						player.currentRoom = dungeon;
-					else if (nextRoom instanceof FoyerRoom)
+						player.currentRoom.printRoom();
+						;
+					} else if (nextRoom instanceof FoyerRoom) {
 						player.currentRoom = mainHall;
-					else if (nextRoom instanceof LibraryRoom)
+						player.currentRoom.printRoom();
+					} else if (nextRoom instanceof LibraryRoom) {
 						player.currentRoom = library;
-					else if (nextRoom instanceof BasementRoom)
+						player.currentRoom.printRoom();
+					} else if (nextRoom instanceof BasementRoom) {
 						player.currentRoom = basement;
-					else if (nextRoom instanceof ExitRoom)
+						player.currentRoom.printRoom();
+					} else if (nextRoom instanceof ExitRoom) {
 						player.currentRoom = exit;
+						player.currentRoom.printRoom();
+					}
 
 				}
 
