@@ -6,7 +6,6 @@ public class ActionParser {
 		action = action.trim().toLowerCase();
 		String[] actions = action.split(" "); // Split player's input into tokens
 
-		// General actions
 		switch (action) {
 		case "hint":
 		case "commands":
@@ -117,15 +116,6 @@ public class ActionParser {
 			}
 			return "combine";
 
-		}
-
-		// More specific actions
-		switch (action) {
-		case "kick":
-			System.out.println("Kick what?");
-			return "";
-		case "kick door":
-			return "kick door";
 		}
 
 		// If action didn't match anything, return it
