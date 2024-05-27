@@ -141,7 +141,7 @@ public class DungeonRoom extends Room {
 	public void printFoyerMove() {
 		System.out.println("You approach the stairway and start ascending its steps...");
 		try {
-			for (int i = 0; i < 0; i++) { // TODO increase wait time
+			for (int i = 0; i < 10; i++) {
 				Thread.sleep(500);
 				System.out.print(".");
 			}
