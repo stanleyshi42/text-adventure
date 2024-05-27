@@ -176,9 +176,10 @@ public class BasementRoom extends Room {
 
 		case "plaece lit candle":
 		case "use lit candle":
-			if (player.inventory.has(Item.LIT_CANDLE) && state == 3)
+			if (player.inventory.has(Item.LIT_CANDLE) && state == 3) {
+				player.inventory.add(Item.RED_KEY);
 				nextState();
-			else
+			} else
 				System.out.println("Nothing happens");
 			break;
 
