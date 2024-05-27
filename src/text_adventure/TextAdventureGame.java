@@ -2,9 +2,9 @@ package text_adventure;
 
 import java.io.BufferedReader;
 import java.io.InputStreamReader;
-
 import rooms.BasementRoom;
 import rooms.DungeonRoom;
+import rooms.EntranceRoom;
 import rooms.WinRoom;
 import rooms.StudyRoom;
 import rooms.FoyerRoom;
@@ -19,6 +19,7 @@ public class TextAdventureGame {
 	public FoyerRoom mainHall = new FoyerRoom();
 	public StudyRoom library = new StudyRoom();
 	public BasementRoom basement = new BasementRoom();
+	public EntranceRoom entrance = new EntranceRoom();
 	public WinRoom exit = new WinRoom();
 
 	private void gameLoop() {
@@ -44,6 +45,9 @@ public class TextAdventureGame {
 						player.currentRoom.printRoom();
 					} else if (nextRoom instanceof BasementRoom) {
 						player.currentRoom = basement;
+						player.currentRoom.printRoom();
+					} else if (nextRoom instanceof EntranceRoom) {
+						player.currentRoom = entrance;
 						player.currentRoom.printRoom();
 					} else if (nextRoom instanceof WinRoom) {
 						player.currentRoom = exit;
@@ -73,6 +77,7 @@ public class TextAdventureGame {
 				mainHall.player = player;
 				library.player = player;
 				basement.player = player;
+				entrance.player = player;
 				exit.player = player;
 
 				gameLoop();
